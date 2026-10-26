@@ -406,6 +406,15 @@ describe('resolveFullDeployBuildCommand', () => {
       });
     },
   );
+
+  it('uses a framework build command as the fallback when provided', () => {
+    expect(
+      resolveFullDeployBuildCommand(root, undefined, FRAMEWORK_PRESETS.nuxt.buildCommand),
+    ).toEqual({
+      label: formatProjectCommand(root, FRAMEWORK_PRESETS.nuxt.buildCommand),
+      command: resolveProjectCommand(root, FRAMEWORK_PRESETS.nuxt.buildCommand),
+    });
+  });
 });
 
 describe('resolveStaticDeployPreset', () => {
